@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
-import counter from './counter';
+import { subredditReducer as subreddit } from './subreddit';
 
 const rootReducer = combineReducers({
-  counter,
-  routing
+  routing,
+  subreddit,
 });
 
 export default rootReducer;

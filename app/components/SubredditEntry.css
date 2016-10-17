@@ -1,0 +1,44 @@
+
+.container {
+  color: black;
+  display: flex;
+}
+
+.score {
+  flex: none;
+  margin-right: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 35px;
+}
+
+.title {
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.scoreChildren {
+  flex: 1 0 100%
+}
+
+.others {
+  flex: 1;
+}
+
+.threadHeader {
+  padding: 10px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.commentContainer {
+  list-style: none;
+  padding: 5px;
+}
+
+.comment {
+  border: 1px solid black;
+  padding: 5px;
+}
