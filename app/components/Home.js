@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import SubredditEntry from './SubredditEntry';
+import ApiHeader from './ApiHeader';
 
 const Home = ({ subredditEntries, getMoreEntries }) => {
   let subredditPosts = [];
@@ -33,6 +34,9 @@ const Home = ({ subredditEntries, getMoreEntries }) => {
   return (
     <div style={{ display: 'flex' }}>
       <div id="listing-pane" style={{ flex: '1 0 50%' }}>
+        <h1 style={{ color: 'black', textAlign: 'center' }}> WUBBA LUBBA DUB DUB - GIPHY EXPERUMENT</h1>
+        <h2 style={{ color: 'black', textAlign: 'center' }}>(Powered By Giphy - of course )</h2>
+        <ApiHeader />
         <ol className="list-group">{subredditPosts}</ol>
         <button
           onClick={getMoreEntries}
@@ -41,8 +45,8 @@ const Home = ({ subredditEntries, getMoreEntries }) => {
         >Next page</button>
       </div>
       <div id="panel-2">
-        <iframe id="p2frame" src="" style={{ display: 'none' }}></iframe>
-        <div id="p2comment-div" className="list-group" style={style}></div>
+        <iframe id="p2frame" src="" style={{ display: 'none' }} />
+        <div id="p2comment-div" className="list-group" style={style} />
       </div>
     </div>
   );
