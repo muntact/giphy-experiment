@@ -3,36 +3,36 @@ import { connect } from 'react-redux';
 
 import Home from '../components/Home';
 import { FETCH_STATES } from '../constants';
-import { fetchSubreddit } from '../reducers/subreddit';
+// import { fetchSubreddit } from '../reducers/subreddit';
 
-const SubredditContents = ({ fetchState, subredditEntries, getMoreEntries }) => (
+const SubredditContents = ({ fetchState, data, getMoreEntries }) => (
   <div>
-    {fetchState === FETCH_STATES.PENDING && subredditEntries.length === 0 &&
+    {fetchState === FETCH_STATES.PENDING && data.length === 0 &&
       'loading'
     }
     {fetchState === FETCH_STATES.ERROR &&
       'error'
     }
-    {subredditEntries.length > 0 &&
-      <Home subredditEntries={subredditEntries} getMoreEntries={getMoreEntries} />
+    {data.length > 0 &&
+      <Home data={data} getMoreEntries={getMoreEntries} />
     }
   </div>
 );
 
 SubredditContents.propTypes = {
+  data: PropTypes.array.isRequired, // eslint-disable-line
   fetchState: PropTypes.string.isRequired,
-  subredditEntries: PropTypes.array.isRequired,
   getMoreEntries: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ subreddit }) => ({
-  fetchState: subreddit.meta.fetchState || FETCH_STATES.PENDING,
-  subredditEntries: subreddit.data,
+const mapStateToProps = ({ giphy }) => ({
+  fetchState: giphy.meta.fetchState || FETCH_STATES.PENDING,
+  data: giphy.data,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = () => ({
   getMoreEntries: () => {
-    dispatch(fetchSubreddit());
+    // TODO
   },
 });
 

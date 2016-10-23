@@ -8,28 +8,14 @@ export const checkStatus = (response) => {
   }
 };
 
-export const subResponseToUsableData = (response) => {
-  const { after, children } = response.data;
-  const subredditEntries = children.map((postEntry) => {
-    const {
-      author,
-      clicked,
-      created_utc,
-      edited,
-      score,
-      domain,
-      num_comments,
-      title,
-      url,
-    } = postEntry.data;
-
-    return {
-      author, clicked, created_utc, edited, score, domain, num_comments, title, url,
-    };
-  });
-
-  return {
-    subredditEntries,
-    after,
-  };
-};
+export const giphySearchResponseToUsableData = (response) => response.data;
+  // const subredditEntries = response.data.map((postEntry) => {
+  //   // const { slug, url, embed_url, import_datetime, trending_datetime, images } = postEntry;
+  //   // return { slug, url, embed_url, import_datetime, trending_datetime, images };
+  // });
+  //
+  // return {
+  //   subredditEntries,
+  //   after,
+  // };
+// };

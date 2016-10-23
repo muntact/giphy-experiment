@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { GIF_INIT } from '../actions/subredditEntry';
+import { APP_INIT } from '../actions/giphy';
 import SubredditContainer from './SubredditContainer';
 
 class HomePage extends Component {
   componentDidMount() {
-    this.context.store.dispatch({ type: GIF_INIT, store: this.context.store });
+    this.context.store.dispatch({ type: APP_INIT, store: this.context.store });
   }
 
   render() {

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
-import { subredditReducer as subreddit } from './subreddit';
+import giphy from './giphy';
 
 const rootReducer = combineReducers({
+  giphy,
   routing,
-  subreddit,
 });
 
 export default rootReducer;
