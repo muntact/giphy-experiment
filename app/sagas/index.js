@@ -3,18 +3,21 @@ import * as Actions from '../actions/giphy';
 import { GIPHY_SEARCH_ROOT, GIPHY_RQ_SUFFIX } from '../constants';
 import { checkStatus } from '../helpers/fetchHelpers';
 
-const searchForGifs = (url = `${GIPHY_SEARCH_ROOT}?q=funny+cat${GIPHY_RQ_SUFFIX}`) =>
-  fetch(url)
+const searchForGifs = (query = 'funny+cat', offset = 0) => {
+  debugger;
+  const url = `${GIPHY_SEARCH_ROOT}?q=${query}&offset=${offset}${GIPHY_RQ_SUFFIX}`;
+  return fetch(url)
     .then((response) => checkStatus(response))
     .then((response) => response.json());
+};
 
-function* watchGetGifs() {
+function* watchGetGifs(getState) {
   while (true) { // eslint-disable-line no-constant-condition
     try {
       // listen for gif requests.
       yield take(Actions.GIFS_REQUESTED);
       yield put({ type: Actions.GET_SEARCH_GIFS_PENDING });
-      const payload = yield call(searchForGifs);
+      const payload = yield call(searchForGifs, undefined, getState().giphy.meta.offset);
       console.log(payload);
       yield put({ type: Actions.GET_SEARCH_GIFS_SUCCESS, payload });
     } catch (error) {

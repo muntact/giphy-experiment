@@ -2,12 +2,12 @@ import React, { PropTypes } from 'react';
 // import SubredditEntry from './SubredditEntry';
 import ApiHeader from './ApiHeader';
 import GiphyComponent from './GiphyComponent';
-import styles from './Home.css';
+// import styles from './Home.css';
 
 const Home = ({ data, getMoreEntries }) => {
   let gifs = [];
   if (data.length > 0) {
-    // debugger;
+    debugger;
     gifs = data.map((giphyEntry, index) => {
       console.log(index, giphyEntry);
       return <GiphyComponent {...giphyEntry} key={index} />;

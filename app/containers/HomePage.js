@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { APP_INIT } from '../actions/giphy';
-import SubredditContainer from './SubredditContainer';
+import GiphyHomeContainer from './GiphyHomeContainer';
 
 class HomePage extends Component {
   componentDidMount() {
@@ -9,7 +9,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <SubredditContainer />
+      <GiphyHomeContainer />
     );
   }
 }

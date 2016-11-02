@@ -1,13 +1,15 @@
 import { handleActions } from 'redux-actions';
 
 import {
+  INCREMENT_OFFSET,
   GET_SEARCH_GIFS_PENDING,
   GET_SEARCH_GIFS_FAILURE,
   GET_SEARCH_GIFS_SUCCESS,
-  getPending, getError, getSuccess,
+  getPending, getError, getSuccess, incrementOffset
 } from '../actions/giphy';
 
 const actionMap = {
+  [INCREMENT_OFFSET]: incrementOffset,
   [GET_SEARCH_GIFS_PENDING]: getPending,
   [GET_SEARCH_GIFS_FAILURE]: getError,
   [GET_SEARCH_GIFS_SUCCESS]: getSuccess,
@@ -15,8 +17,8 @@ const actionMap = {
 
 const initialGiphyStore = {
   data: [],
-  meta: { after: null },
+  meta: { offset: 0 },
 };
 
-export const giphyReducer = handleActions(actionMap, initialGiphyStore);
-export default giphyReducer;
+export const giphy = handleActions(actionMap, initialGiphyStore);
+export default giphy;

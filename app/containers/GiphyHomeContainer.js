@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import { GIFS_REQUESTED, INCREMENT_OFFSET } from '../actions/giphy';
 import Home from '../components/Home';
 import { FETCH_STATES } from '../constants';
-// import { fetchSubreddit } from '../reducers/subreddit';
 
-const SubredditContents = ({ fetchState, data, getMoreEntries }) => (
+const GiphyHomeContents = ({ fetchState, data, getMoreEntries }) => (
   <div>
     {fetchState === FETCH_STATES.PENDING && data.length === 0 &&
       'loading'
@@ -14,12 +14,12 @@ const SubredditContents = ({ fetchState, data, getMoreEntries }) => (
       'error'
     }
     {data.length > 0 &&
-      <Home data={data} getMoreEntries={getMoreEntries} />
+      <Home { ...{ data, getMoreEntries }} />
     }
   </div>
 );
 
-SubredditContents.propTypes = {
+GiphyHomeContents.propTypes = {
   data: PropTypes.array.isRequired, // eslint-disable-line
   fetchState: PropTypes.string.isRequired,
   getMoreEntries: PropTypes.func.isRequired,
@@ -30,11 +30,13 @@ const mapStateToProps = ({ giphy }) => ({
   data: giphy.data,
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
   getMoreEntries: () => {
-    // TODO
+    debugger;
+    dispatch({ type: INCREMENT_OFFSET });
+    dispatch({ type: GIFS_REQUESTED });
   },
 });
 
-const SubredditContainer = connect(mapStateToProps, mapDispatchToProps)(SubredditContents);
-export default SubredditContainer;
+const GiphyHomeContainer = connect(mapStateToProps, mapDispatchToProps)(GiphyHomeContents);
+export default GiphyHomeContainer;
